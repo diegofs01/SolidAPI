@@ -13,6 +13,10 @@ router.get('/users/:id', (request, response) => {
     return getUserController.handle(request, response);
 });
 
+router.get('/users/email/:email', (request, response) => {
+    return getUserController.handle(request, response);
+})
+
 router.get('/users', (request, response) => {
     return getAllUsersController.handle(request, response);
 });

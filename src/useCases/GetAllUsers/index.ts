@@ -1,10 +1,11 @@
-import { PostgresUsersRepository } from "../../repositories/implementations/PostgresUsersRepository";
+import { MongoUsersRepository } from "../../repositories/implementations/Mongo/MongoUsersRepository";
 import { GetAllUsersController } from "./GetAllUsersController";
 import { GetAllUsersUseCase } from "./GetAllUsersUseCase";
-const postgresUsersRepository = new PostgresUsersRepository();
+
+const mongoUsersRepository = new MongoUsersRepository();
 
 const getAllUsersUseCase = new GetAllUsersUseCase(
-    postgresUsersRepository
+    mongoUsersRepository
 )
 
 const getAllUsersController = new GetAllUsersController (

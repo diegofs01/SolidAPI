@@ -6,10 +6,16 @@ export class GetUserController {
         private getUserUseCase: GetUserUseCase
     ) {}
     async handle(request: Request, response: Response): Promise<Response> {
-        const { id } = request.params;
+        const { id, email } = request.params;        
         try {
-            const user = await this.getUserUseCase.execute(id);
-            return response.status(200).json(user);
+            if(id) {
+                const user = await this.getUserUseCase.executeById(id);
+                return response.status(200).json(user);
+            }
+            if(email) {
+                const user = await this.getUserUseCase.executeByEmail(email);
+                return response.status(200).json(user);
+            }
         } catch (err) {
             return response.status(400).json({
                 message: err.message || "Erro"

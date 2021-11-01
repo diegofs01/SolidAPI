@@ -1,13 +1,14 @@
 import { MailTrapMailProvider } from "../../providers/implementations/MailTrapMailProvider";
-import { PostgresUsersRepository } from "../../repositories/implementations/PostgresUsersRepository";
+import { MongoUsersRepository } from "../../repositories/implementations/Mongo/MongoUsersRepository";
+
 import { CrateUserController } from "./CreateUserController";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 
 const mailTrapMailProvider = new MailTrapMailProvider();
-const postgresUsersRepository = new PostgresUsersRepository();
+const mongoUsersRepository = new MongoUsersRepository();
 
 const createUserUseCase = new CreateUserUseCase(
-    postgresUsersRepository,
+    mongoUsersRepository,
     mailTrapMailProvider
 );
 

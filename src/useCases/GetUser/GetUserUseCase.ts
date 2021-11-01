@@ -5,11 +5,19 @@ export class GetUserUseCase {
         private usersRepository: IUsersRepository
     ) {}
 
-    async execute(id: string) {
+    async executeById(id: string) {
        const user = await this.usersRepository.findById(id);
        if(!user) {
            throw new Error('User not found');
        }
        return user;
+    }
+
+    async executeByEmail(email: string) {
+        const user = await this.usersRepository.findByEmail(email);
+        if(!user) {
+            throw new Error('User not found');
+        }
+        return user;
     }
 }
